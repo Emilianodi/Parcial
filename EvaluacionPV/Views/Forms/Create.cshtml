@@ -1,0 +1,72 @@
+﻿@model EvaluacionPV.Models.IDtributaria
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear nuevo registro</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Cond_IVA" class="control-label"></label>
+                <select asp-for="Cond_IVA" class="form-control">
+                    <option value="nothing"></option>
+                    <option value="monotri">Monotributista</option>
+                    <option value="resp">Responsable Inscripto</option>
+                    <option value="exen">Exento</option>
+                </select>
+              
+                <span asp-validation-for="Cond_IVA" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="CUIT" class="control-label"></label>
+                <input asp-for="CUIT" class="form-control" />
+                <span asp-validation-for="CUIT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Domicilio" class="control-label"></label>
+                <input asp-for="Domicilio" class="form-control" />
+                <span asp-validation-for="Domicilio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Razón_social" class="control-label"></label>
+                <input asp-for="Razón_social" class="form-control" />
+                <span asp-validation-for="Razón_social" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CondicionesVenta" class="control-label"></label>
+                <ol>
+                    <input type="radio" asp-for="CondicionesVenta" value="Contado">Contado <br />
+                    <input type="radio" asp-for="CondicionesVenta" value="Cheque">Cheque<br />
+                    <input type="radio" asp-for="CondicionesVenta" value="Ticket">Ticket<br />
+                    <input type="radio" asp-for="CondicionesVenta" value="Otra">Otra
+                </ol>
+               
+                <span asp-validation-for="CondicionesVenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar a registros.</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
